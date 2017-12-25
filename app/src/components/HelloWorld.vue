@@ -21,13 +21,19 @@
         },
         methods: {
             addUser() {
-                var name = this.userName;
-                var age = this.age;
-                this.$http.post('/api/user/addUser', {
-                    username: name,
-                    age: age
-                }, {}).then((response) => {
-                    console.log(response);
+                var self = this;
+                self.$ajax({
+                    url: '/api/user/addUser',
+                    method: 'post',
+                    dataType: 'json',
+                    data: {
+                        username: self.userName,
+                        age: self.age
+                    }
+                }).then(res => {
+                    if (res.success) {
+                        console.log(response);
+                    }
                 })
             }
         }
