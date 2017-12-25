@@ -8,8 +8,8 @@ var $sql = require('../sqlMap');
 var conn = mysql.createConnection(models.mysql);
 
 conn.connect();
-var jsonWrite = function(res, ret) {
-    if(typeof ret === 'undefined') {
+var jsonWrite = function (res, ret) {
+    if (typeof ret === 'undefined') {
         res.json({
             code: '1',
             msg: '操作失败'
@@ -24,7 +24,7 @@ router.post('/addUser', (req, res) => {
     var sql = $sql.user.add;
     var params = req.body;
     console.log(params);
-    conn.query(sql, [params.username, params.age], function(err, result) {
+    conn.query(sql, [params.username, params.age], function (err, result) {
         if (err) {
             console.log(err);
         }
