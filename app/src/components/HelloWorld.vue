@@ -32,7 +32,7 @@
                     }
                 }).then(res => {
                     if (res.success) {
-                        console.log(response);
+                        console.log(res);
                     }
                 })
             }
