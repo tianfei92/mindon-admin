@@ -31,7 +31,7 @@
                         age: self.age
                     }
                 }).then(res => {
-                    if (res.success) {
+                    if (res.data.success) {
                         console.log(res);
                     }
                 })
