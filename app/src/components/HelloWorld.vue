@@ -1,6 +1,6 @@
 <template>
     <div class="hello">
-        <h1>{{ msg }}</h1>
+        <Welcome :message="msg"></Welcome>
         <form>
             <input type="text" name="username" v-model="userName"> <br>
             <input type="text" name="age" v-model="age"> <br>
@@ -10,8 +10,10 @@
 </template>
 
 <script>
+    import Welcome from './welcome'
     export default {
         name: 'hello',
+        components: {Welcome},
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App',
