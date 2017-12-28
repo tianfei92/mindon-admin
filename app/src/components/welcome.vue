@@ -5,7 +5,10 @@
 <script>
     export default {
         name: "welcome",
-        props: ['message']
+        props: ['message'],
+        created() {
+            this.$emit('contact')
+        }
     }
 </script>
 

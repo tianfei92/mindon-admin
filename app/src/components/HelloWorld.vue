@@ -1,6 +1,6 @@
 <template>
     <div class="hello">
-        <Welcome :message="msg"></Welcome>
+        <Welcome :message="msg" @contact="comFromChildren"></Welcome>
         <form>
             <input type="text" name="username" v-model="userName"> <br>
             <input type="text" name="age" v-model="age"> <br>
@@ -37,6 +37,9 @@
                         console.log(res);
                     }
                 })
+            },
+            comFromChildren: function () {
+                console.log('子组件传来信息啦')
             }
         }
     }
