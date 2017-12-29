@@ -11,6 +11,7 @@
 
 <script>
     import Welcome from './welcome'
+
     export default {
         name: 'hello',
         components: {Welcome},
