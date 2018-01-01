@@ -2,9 +2,10 @@
     <div class="hello">
         <Welcome :message="msg" @contact="comFromChildren"></Welcome>
         <form>
-            <input type="text" name="username" v-model="userName"> <br>
-            <input type="text" name="age" v-model="age"> <br>
-            <a href="javascript:;" @click="addUser">提交</a>
+            <label>用户名：<input type="text" name="username" v-model="userName"></label> <br>
+            <label>密码：<input type="text" name="age" v-model="age"></label> <br>
+            <button @click="addUser">登录</button>
+            <button @click="addUser">注册</button>
         </form>
     </div>
 </template>

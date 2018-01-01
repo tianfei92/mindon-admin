@@ -8,12 +8,12 @@ import Axios from 'axios'
 Vue.config.productionTip = false;
 Vue.prototype.$ajax = config => {
     return Axios(config)
-}
+};
 
-/* eslint-disable no-new */
+
 new Vue({
     el: '#app',
     router,
     template: '<App/>',
     components: {App}
-})
+});
