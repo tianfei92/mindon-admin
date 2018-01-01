@@ -4,7 +4,7 @@ module.exports = {
         host: '127.0.0.1',
         user: 'root',
         password: 'arieltian@1992',
-        database: 'test',
+        database: 'backend_system',
         port: '3306'
     }
 }

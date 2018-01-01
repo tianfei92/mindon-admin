@@ -2,7 +2,7 @@
 var sqlMap = {
     // 用户
     user: {
-        add: 'insert into user(id, name, age) values (0, ?, ?)'
+        add: 'insert into user_log_in(id, name, password) values (0, ?, ?)'
     }
 }
 

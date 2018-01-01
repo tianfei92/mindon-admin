@@ -3,7 +3,7 @@
         <Welcome :message="msg" @contact="comFromChildren"></Welcome>
         <form>
             <label>用户名：<input type="text" name="username" v-model="userName"></label> <br>
-            <label>密码：<input type="text" name="age" v-model="age"></label> <br>
+            <label>密码：<input type="text" name="password" v-model="password"></label> <br>
             <button @click="addUser">登录</button>
             <button @click="addUser">注册</button>
         </form>
@@ -20,19 +20,19 @@
             return {
                 msg: 'Welcome to Your Vue.js App',
                 userName: '',
-                age: ''
+                password: ''
             }
         },
         methods: {
             addUser() {
                 var self = this;
                 self.$ajax({
-                    url: '/api/user/addUser',
+                    url: '/api/user/login',
                     method: 'post',
                     dataType: 'json',
                     data: {
                         username: self.userName,
-                        age: self.age
+                        password: self.password
                     }
                 }).then(res => {
                     if (res.data.success) {
