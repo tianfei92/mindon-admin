@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config app/build/webpack.dev.conf.js",
     "start": "node app/server/index.js",
-    "build": ""
+    "build": "node app/build/build.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
