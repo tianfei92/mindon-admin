@@ -5,9 +5,9 @@
   "author": "tianfeib <tianfeib@zbj.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
-    "build": "node server/index.js"
+    "dev": "webpack-dev-server --inline --progress --config app/build/webpack.dev.conf.js",
+    "start": "node app/server/index.js",
+    "build": ""
   },
   "dependencies": {
     "body-parser": "^1.18.2",
