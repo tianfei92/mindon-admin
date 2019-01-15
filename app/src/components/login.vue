@@ -1,14 +1,16 @@
 <template>
     <div class="login">
-        <el-form label-width="80px" label-suffix="：" size="small" ref="form" :model="formData" :rules="rules">
-            <el-form-item label="用户名" prop="userName">
-                <el-input v-model="formData.userName"></el-input>
-            </el-form-item>
-            <el-form-item label="密码" prop="password">
-                <el-input type="password" v-model="formData.password"></el-input>
-            </el-form-item>
-            <el-button type="primary" @click="login">登录</el-button>
-        </el-form>
+        <el-card header="系统登录" class="login-box">
+            <el-form label-width="80px" label-suffix="：" size="small" ref="form" :model="formData" :rules="rules">
+                <el-form-item label="用户名" prop="userName">
+                    <el-input v-model="formData.userName"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="password">
+                    <el-input type="password" v-model="formData.password"></el-input>
+                </el-form-item>
+            </el-form>
+            <el-button class="btn" type="primary" @click="login">登录</el-button>
+        </el-card>
     </div>
 </template>
 
@@ -89,4 +91,29 @@
     }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+    .login {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #35495e;
+    }
+
+    .login-box {
+        position: absolute;
+        width: 450px;
+        height: 300px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 30px;
+    }
+</style>
