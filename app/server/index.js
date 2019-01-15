@@ -6,9 +6,19 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
+const session = require('express-session');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(session({
+    secret: 'md5',
+    cookie: {
+        maxAge: 6000 * 30
+    },
+    name: 'username',
+    resave: true,
+    saveUninitialized: true
+}))
 
 // 后端api路由
 app.use('/api/user', userApi);
