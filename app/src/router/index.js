@@ -1,23 +1,47 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Resource from 'vue-resource'
-import HelloWorld from '../components/HelloWorld'
-import promise from '../components/promise'
+import VueRouter from 'vue-router'
+import index from '../views/index'
+import login from '../components/login'
+import Axios from 'axios'
 
-Vue.use(Router)
-Vue.use(Resource)
+Vue.use(VueRouter)
 
-export default new Router({
+const router = new VueRouter({
     routes: [
         {
             path: '/',
-            name: 'HelloWorld',
-            component: HelloWorld
+            name: 'index',
+            component: index
         },
         {
-            path: '/promise',
-            name: 'promise',
-            component: promise
+            path: '/login',
+            name: 'login',
+            component: login
         }
     ]
 })
+
+/**
+ * 所有页面都需要登录校验
+ */
+router.beforeEach((to, from, next) => {
+    if (to.path === '/login') {
+        next()
+    } else {
+        Axios({
+            url: '/api/user/login/check',
+            method: 'post'
+        }).then(res => {
+            if (res.data.success) {
+                next()
+            } else {
+                next('/login')
+            }
+        }).catch(error => {
+            console.log(`登录校验时发生异常---->${error}`);
+            next('/login')
+        })
+    }
+})
+
+export default router
