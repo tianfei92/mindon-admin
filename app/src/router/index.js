@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Axios from 'axios'
+
 import index from '../views/index'
 import login from '../components/login'
-import Axios from 'axios'
 
 Vue.use(VueRouter)
 

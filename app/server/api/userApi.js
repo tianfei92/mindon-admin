@@ -1,9 +1,10 @@
-const models = require('../db');
 const express = require('express');
 const router = express.Router();
+const crypto = require('crypto');
 const mysql = require('mysql');
+const models = require('../db');
 const $sql = require('../sqlMap');
-let crypto = require('crypto');
+
 
 /**
  * 连接数据库
