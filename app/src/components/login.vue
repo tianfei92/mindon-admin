@@ -9,6 +9,8 @@
                     <el-input type="password" v-model="formData.password"></el-input>
                 </el-form-item>
             </el-form>
+
+            <el-button class="btn" type="primary" plain @click="register">注册</el-button>
             <el-button class="btn" type="primary" @click="login">登录</el-button>
         </el-card>
     </div>
@@ -47,12 +49,18 @@
             login() {
                 this.$refs.form.validate((valid) => {
                     if (valid) {
-                        this.submit()
-                    } else {
-                        // this.$message({
-                        //     message: '请填写用户名和密码',
-                        //     type: 'error'
-                        // })
+                        this.submitLogin()
+                    }
+                })
+            },
+
+            /**
+             * 注册
+             */
+            register() {
+                this.$refs.form.validate(valid => {
+                    if (valid) {
+                        this.submitRegister()
                     }
                 })
             },
@@ -60,7 +68,7 @@
             /**
              * 提交登录请求
              */
-            submit() {
+            submitLogin() {
                 this.$ajax({
                     url: '/api/user/login',
                     method: 'post',
@@ -81,6 +89,37 @@
                     }
                 }).catch(error => {
                     console.log(`登录异常---->${error}`);
+                    this.$message({
+                        message: '网络异常，请刷新重试',
+                        type: 'error'
+                    })
+                })
+            },
+
+            /**
+             * 提交注册请求
+             */
+            submitRegister() {
+                this.$ajax({
+                    url: '/api/user/register',
+                    method: 'post',
+                    data: {
+                        username: this.formData.userName,
+                        password: this.formData.password
+                    }
+                }).then(res => {
+                    if (res.success) {
+                        this.$router.push({
+                            name: 'index'
+                        })
+                    } else {
+                        this.$message({
+                            message: res.msg,
+                            type: 'error'
+                        })
+                    }
+                }).catch(error => {
+                    console.log(`注册用户异常---->${error}`);
                     this.$message({
                         message: '网络异常，请刷新重试',
                         type: 'error'
@@ -113,7 +152,7 @@
     }
 
     .btn {
-        width: 100%;
+        width: 40%;
         margin-top: 30px;
     }
 </style>
