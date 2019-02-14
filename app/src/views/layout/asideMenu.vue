@@ -1,5 +1,5 @@
 <template>
-    <el-menu background-color="#545c64" text-color="#fff">
+    <el-menu background-color="#545c64" text-color="#fff" style="border: none">
         <template v-for="(menu, index) in menuList">
             <!--有子菜单-->
             <el-submenu v-if="menu.children && menu.children.length" :key="index" :index="index.toString()">
