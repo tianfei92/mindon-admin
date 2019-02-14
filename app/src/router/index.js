@@ -2,25 +2,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Axios from 'axios'
 
-import index from '../views/index'
-import login from '../components/login'
+import menus from './menus'
+import pages from './pages'
 
 Vue.use(VueRouter)
 
-const router = new VueRouter({
-    routes: [
-        {
-            path: '/',
-            name: 'index',
-            component: index
-        },
-        {
-            path: '/login',
-            name: 'login',
-            component: login
-        }
-    ]
-})
+const routerConfig = {
+    routes: [...menus, ...pages]
+}
+
+const router = new VueRouter(routerConfig)
 
 /**
  * 所有页面都需要登录校验

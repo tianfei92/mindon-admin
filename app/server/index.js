@@ -11,7 +11,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(session({
     secret: 'md5',
     cookie: {
-        maxAge: 6000 * 30
+        maxAge: 1000 * 60 * 30,
+        httpOnly: true
     },
     name: 'username',
     resave: true,
