@@ -10,8 +10,8 @@
                 </el-form-item>
             </el-form>
 
-            <el-button class="btn" type="primary" plain @click="register">注册</el-button>
-            <el-button class="btn" type="primary" @click="login">登录</el-button>
+            <el-button class="btn" size="medium" type="primary" plain @click="register">注册</el-button>
+            <el-button class="btn" size="medium" type="primary" @click="login">登录</el-button>
         </el-card>
     </div>
 </template>
@@ -149,6 +149,7 @@
         left: 0;
         right: 0;
         margin: auto;
+        text-align: center;
     }
 
     .btn {
