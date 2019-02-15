@@ -79,7 +79,7 @@
                 }).then(res => {
                     if (res.success) {
                         this.$router.push({
-                            name: 'index'
+                            name: 'home'
                         })
                     } else {
                         this.$message({
@@ -110,7 +110,7 @@
                 }).then(res => {
                     if (res.success) {
                         this.$router.push({
-                            name: 'index'
+                            name: 'home'
                         })
                     } else {
                         this.$message({
