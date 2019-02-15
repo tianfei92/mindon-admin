@@ -1,13 +1,14 @@
 import layout from '../views/layout/layout'
-
-import index from '../views/index'
 import login from '../components/login'
 
 export default [
     {
-        path: '/',
+        path: '/index',
         name: 'index',
-        component: layout
+        component: layout,
+        redirect: {
+            name: 'home'
+        }
     },
     {
         path: '/login',

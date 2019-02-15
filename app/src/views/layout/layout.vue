@@ -7,11 +7,14 @@
 
         <!--内容区-->
         <el-container class="page-container">
-            <el-header style="text-align: right; font-size: 12px">
-                <p>欢迎您，{{}}</p>
+            <el-header class="page-container-header">
+                <div class="breadcrumb">
+                    <breadcrumb></breadcrumb>
+                </div>
+                <p class="nick-name">欢迎您，{{}}</p>
             </el-header>
 
-            <el-main>
+            <el-main class="page-container-main">
                 <router-view></router-view>
             </el-main>
         </el-container>
@@ -20,12 +23,11 @@
 
 <script>
     import asideMenu from './asideMenu'
+    import breadcrumb from './breadcrumb'
 
     export default {
         name: "layout",
-        components: {
-            asideMenu
-        }
+        components: {asideMenu, breadcrumb}
     }
 </script>
 
@@ -46,8 +48,34 @@
         z-index: 999;
     }
 
+    .el-header {
+        font-size: 12px;
+        box-shadow: 0 5px 3px #eee;
+    }
+</style>
+
+<style lang="less" scoped>
     .page-container {
         position: absolute;
         padding-left: 200px;
+
+        .page-container-header {
+            position: relative;
+            overflow: hidden;
+            zoom: 1;
+            line-height: 60px;
+
+            .breadcrumb {
+                float: left;
+
+                .el-breadcrumb {
+                    line-height: 60px;
+                }
+            }
+
+            .nick-name {
+                float: right;
+            }
+        }
     }
 </style>
