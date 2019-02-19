@@ -90,6 +90,19 @@ router.post('/login', (req, res) => {
 });
 
 /**
+ * 退出登录
+ */
+router.post('/singOut', (req, res) => {
+    req.session.username = '';
+    req.session.password = '';
+    res.send({
+        code: 0,
+        success: true,
+        msg: '退出登录成功！'
+    })
+})
+
+/**
  * 注册
  */
 router.post('/register', (req, res) => {
@@ -153,7 +166,7 @@ router.post('/register', (req, res) => {
 /**
  * 登录校验
  */
-router.post('/login/check', (req, res, next) => {
+router.post('/login/check', (req, res) => {
     if (req.session && req.session.username) {
         res.send({
             code: 0,
@@ -165,6 +178,27 @@ router.post('/login/check', (req, res, next) => {
             code: 1001,
             success: false,
             msg: '未登录'
+        })
+    }
+})
+
+/**
+ * 获取登录用户信息
+ */
+router.get('/info', (req, res) => {
+    if (req.session && req.session.username) {
+        res.send({
+            code: 0,
+            success: true,
+            data: {
+                userName: req.session.username
+            }
+        })
+    } else {
+        res.send({
+            code: 1001,
+            success: false,
+            msg: '用户未登录'
         })
     }
 })

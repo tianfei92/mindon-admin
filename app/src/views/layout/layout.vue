@@ -11,7 +11,11 @@
                 <div class="breadcrumb">
                     <breadcrumb></breadcrumb>
                 </div>
-                <p class="nick-name">欢迎您，{{}}</p>
+                <p class="nick-name">
+                    欢迎您，{{userInfo.userName}}
+                    &nbsp;|&nbsp;
+                    <span style="color: #008aff; cursor: pointer;" @click="singOut">退出</span>
+                </p>
             </el-header>
 
             <el-main class="page-container-main">
@@ -22,12 +26,41 @@
 </template>
 
 <script>
+    import {mapActions, mapState} from 'vuex';
     import asideMenu from './asideMenu'
     import breadcrumb from './breadcrumb'
 
     export default {
         name: "layout",
-        components: {asideMenu, breadcrumb}
+        components: {asideMenu, breadcrumb},
+        computed: {
+            ...mapState('user', [
+                'userInfo'
+            ]),
+        },
+        created() {
+            this.getUserInfo()
+        },
+        methods: {
+            ...mapActions('user', [
+                'getUserInfo'
+            ]),
+            /**
+             * 退出登录
+             */
+            singOut() {
+                this.$ajax({
+                    url: '/api/user/singOut',
+                    method: 'post'
+                }).then(res => {
+                    if (res.success) {
+                        window.location.reload()
+                    }
+                }).catch(e => {
+                    console.log(`退出登录时发生异常 ****** ${e}`)
+                })
+            }
+        }
     }
 </script>
 
