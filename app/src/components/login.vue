@@ -137,7 +137,9 @@
         height: 100%;
         top: 0;
         left: 0;
-        background-color: #35495e;
+        background: url('../../static/bg.jpg') center !important;
+        background-size: cover;
+        background: #1F2D3D;
     }
 
     .login-box {
